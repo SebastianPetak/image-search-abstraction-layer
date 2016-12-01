@@ -18,6 +18,7 @@
   "homepage": "https://github.com/SebastianPetak/image-search-abstraction-layer#readme",
   "dependencies": {
     "express": "^4.14.0",
+    "mongodb": "^2.2.12",
     "request": "^2.79.0"
   }
 }
