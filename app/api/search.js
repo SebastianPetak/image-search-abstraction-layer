@@ -31,12 +31,27 @@ module.exports = function(searchTerms, offset, auth, dbUrl, callback) {
 
 	request(options, function(e, res, body) {
 		if (e) throw e
-		callback(body);
-		// take the proper amount of documents (offset value)
-		// get the fields we desire
-		// send response
+		callback(prepSearchRes(body));
 	})
 
+	var prepSearchRes = function(body) {
+		var parsedJSON = JSON.parse(body);
+		var data = parsedJSON.data;
+		var result = [];
+		if (data.length > 0) {
+			for (var i = 0; i < 10 && i < data.length; i++) {
+				var obj = {
+					"cover": "i.imgur.com/" + data[i].cover + ".jpg",
+					"title": data[i].title,
+					"link": data[i].link
+				}
+				result.push(obj);
+			}
+		} else {
+			return JSON.stringify({"error": "No match found"});
+		}
+		return JSON.stringify(result);
+	};
 
 	saveSearchTerms();
 
