@@ -16,8 +16,12 @@ module.exports = function(app, auth, dbUrl) {
 		var searchTerms = req.params.SEARCHTERMS;
 		// offset used to paginate through responses
 		var offset = req.query.offset || 10
-		search(searchTerms, offset, auth, dbUrl, function(response) {
-			console.log(response);
-		});
+		if (searchTerms != 'favicon.ico') {
+			search(searchTerms, offset, auth, dbUrl, function(response) {
+				console.log("Search response sent");
+				res.type("json");
+				res.send(response);
+			});
+		}
 	});
 };

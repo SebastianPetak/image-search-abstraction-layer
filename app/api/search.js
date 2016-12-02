@@ -12,14 +12,14 @@ module.exports = function(searchTerms, offset, auth, dbUrl, callback) {
 			imgSearchHist.insert({
 				'search_terms': searchTerms
 			}, function(e, result) {
+				db.close();
 				if (e) throw e
 				console.log("Added search to database: " + result.ops[0].search_terms);
+				console.log("Database closed");
 			})
-			db.close();
 		});
 	};
 
-/*
 	var options = { uri:'https://api.imgur.com/3/gallery/search?q={' + searchTerms + '}',
 									method: 'GET',
 									type: 'GET',
@@ -31,9 +31,12 @@ module.exports = function(searchTerms, offset, auth, dbUrl, callback) {
 
 	request(options, function(e, res, body) {
 		if (e) throw e
-		console.log(body);
+		callback(body);
+		// take the proper amount of documents (offset value)
+		// get the fields we desire
+		// send response
 	})
-*/
+
 
 	saveSearchTerms();
 
