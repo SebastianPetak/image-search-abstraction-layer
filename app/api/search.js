@@ -23,6 +23,7 @@ module.exports = function(searchTerms, offset, auth, dbUrl, callback) {
 	var options = { uri:'https://api.imgur.com/3/gallery/search?q={' + searchTerms + '}',
 									method: 'GET',
 									type: 'GET',
+									top: offset,
 									headers: {
 										"Authorization": "Client-ID " + auth,
 										Accept: 'application/json'
@@ -39,7 +40,7 @@ module.exports = function(searchTerms, offset, auth, dbUrl, callback) {
 		var data = parsedJSON.data;
 		var result = [];
 		if (data.length > 0) {
-			for (var i = 0; i < 10 && i < data.length; i++) {
+			for (var i = offset; i < offset + 10 && i < data.length; i++) {
 				var obj = {
 					"cover": "i.imgur.com/" + data[i].cover + ".jpg",
 					"title": data[i].title,

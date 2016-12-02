@@ -15,7 +15,7 @@ module.exports = function(app, auth, dbUrl) {
 	app.get('/:SEARCHTERMS', function(req, res) {
 		var searchTerms = req.params.SEARCHTERMS;
 		// offset used to paginate through responses
-		var offset = req.query.offset || 10
+		var offset = req.query.offset || 0
 		if (searchTerms != 'favicon.ico') {
 			search(searchTerms, offset, auth, dbUrl, function(response) {
 				console.log("Search response sent");
