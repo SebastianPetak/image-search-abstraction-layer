@@ -6,7 +6,8 @@ module.exports = function(app, auth, dbUrl) {
 		res.render('index');
 		console.log("Sent user to index");
 	});
-
+	
+	// returns 10 most recent searches
 	app.get('/searchhistory', function(req, res) {
 		history(dbUrl, function(response) {
 			res.type("json");
@@ -14,6 +15,7 @@ module.exports = function(app, auth, dbUrl) {
 		});
 	});
 
+	// returns 10 matching items from imgur api based on url  parameter
 	app.get('/:SEARCHTERMS', function(req, res) {
 		var searchTerms = req.params.SEARCHTERMS;
 		// offset used to paginate through responses

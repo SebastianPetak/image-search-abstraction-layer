@@ -20,6 +20,7 @@ module.exports = function(searchTerms, offset, auth, dbUrl, callback) {
 		});
 	};
 
+	// options required for imgur api request
 	var options = { uri:'https://api.imgur.com/3/gallery/search?q={' + searchTerms + '}',
 									method: 'GET',
 									type: 'GET',
@@ -35,6 +36,7 @@ module.exports = function(searchTerms, offset, auth, dbUrl, callback) {
 		callback(prepSearchRes(body));
 	})
 
+	// returns 10 (or less) documents with specific fields from imgur api request 
 	var prepSearchRes = function(body) {
 		var parsedJSON = JSON.parse(body);
 		var data = parsedJSON.data;

@@ -5,6 +5,7 @@ module.exports = function(dbUrl, callback) {
 		if (e) throw e
 		var imgSearchHist = db.collection('imgSearchHist');
 		imgSearchHist.find({}).sort({
+			// sorts by _id (which has a date)
 			$natural: -1
 		}).limit(10).toArray(function(e, response) {
 			if (e) throw e;
@@ -15,13 +16,3 @@ module.exports = function(dbUrl, callback) {
 		});
 	});
 }
-
-
-			/*if (response) {
-				for (var i = 0; i < 10 && i < 
-
-		imgSearchHist.find().sort([['_id', -1]]).limit(10), function(e, response) {
-			if (e) throw e;
-			console.log(reponse);
-*/
-		
