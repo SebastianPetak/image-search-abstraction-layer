@@ -1,1 +1,124 @@
-<h1>Index Page</h1>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Image Search Abstraction Layer</title>
+		<link href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel='stylesheet')>
+	</head>
+
+<body>
+	<div class="container">
+		<h1>Image Search Abstraction Layer</h1>
+		<blockquote>
+		User Stories:
+		<ol>
+			<li>I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.</li>
+			<li>I can paginate through the responses by adding a ?offset=2 parameter to the URL.</li>
+			<li>I can get a list of the most recently submitted search strings.</li>
+		</ol></blockquote>
+		<h2>Example query usage:</h2>
+		<blockquote><code>https://img-sal.herokuapp.com/lolcats%20funny?offset=10</code></blockquote>
+		<blockquote><code>https://img-sal.herokuapp.com/searchhistory</code></blockquote>
+		<h2>Example query output</h2>
+			<blockquote><pre><code>
+[
+	{
+		mcover": "i.imgur.com/undefined.jpg",
+		"title": "So my mom apparently thought the cat needed crocheted fox ears",
+		"link": "http://i.imgur.com/PhYtTAo.jpg"
+	},
+	{
+		"cover": "i.imgur.com/undefined.jpg",
+		"title": "Who Wore it Better",
+		"link": "http://i.imgur.com/NRrMD4p.jpg"
+	},
+	{
+		"cover": "i.imgur.com/FrNlIC6.jpg",
+		"title": "Old School Lolcats",
+		"link": "http://imgur.com/a/PzTdI"
+	},
+	{
+		"cover": "i.imgur.com/PWneTd5.jpg",
+		"title": "IDK 'bout you guys, but I still think they're funny.",
+		"link": "http://imgur.com/a/sDaHZ"
+	},
+	{
+		"cover": "i.imgur.com/undefined.jpg",
+		"title": "OMG that email",
+		"link": "http://i.imgur.com/fHtRwU7.jpg"
+	},
+	{
+		"cover": "i.imgur.com/undefined.jpg",
+		"title": "MRW I'm at work and forget to lock my bathroom door...",
+		"link": "http://i.imgur.com/d95QmbE.jpg"
+	},
+	{
+		"cover": "i.imgur.com/undefined.jpg",
+		"title": "Eye of the Obvious",
+		"link": "http://i.imgur.com/2BpdHvA.png"
+	},
+	{
+		"cover": "i.imgur.com/undefined.jpg",
+		"title": "Cub",
+		"link": "http://i.imgur.com/EkiPNwI.png"
+	},
+	{
+		"cover": "i.imgur.com/undefined.jpg",
+		"title": "Every morning with my 3 year old",
+		"link": "http://i.imgur.com/2B4iM3G.jpg"
+	},
+	{
+		"cover": "i.imgur.com/undefined.jpg",
+		"title": "r/lolcats didn't like my first lolcat..",
+		"link": "http://i.imgur.com/JEWcB.png"
+	}
+]
+			</code></pre></blockquote>
+		<h2>Example query output</h2>
+			<blockquote><pre><code>
+[
+	{
+		"term": "lolcats funny",
+		"when": "2016-01-23T04:21:19.441Z"
+	},
+	{
+		"term": "lolcats funny",
+		"when": "2016-01-23T04:20:26.237Z"
+	},
+	{
+		"term": "lolcats funny",
+		"when": "2016-01-23T02:06:32.898Z"
+	},
+	{
+		"term": "lolcats sad",
+		"when": "2016-01-23T01:29:55.894Z"
+	},
+	{
+		"term": "lolcats funny",
+		"when": "2016-01-23T01:29:45.727Z"
+	},
+	{
+		"term": "lolcats funny",
+		"when": "2016-01-23T00:43:49.365Z"
+	},
+	{
+		"term": "lolcats funny",
+		"when": "2016-01-22T23:47:24.660Z"
+	},
+	{
+		"term": "lolcats funny",
+		"when": "2016-01-22T23:43:12.142Z"
+	},
+	{
+		"term": "lolcats funny",
+		"when": "2016-01-22T23:35:59.976Z"
+	},
+	{
+		"term": "lolcats funny",
+		"when": "2016-01-22T23:13:07.220Z"
+	}
+]
+			</code></pre></blockquote>
+	</div>
+</body>
+</html>

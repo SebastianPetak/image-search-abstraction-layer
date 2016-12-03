@@ -3,13 +3,15 @@ var history = require('../api/history.js');
 
 module.exports = function(app, auth, dbUrl) {
 	app.get('/', function(req, res) {
-		res.end('index');
+		res.render('index');
 		console.log("Sent user to index");
 	});
 
 	app.get('/searchhistory', function(req, res) {
-		history(dbUrl);
-		res.end();
+		history(dbUrl, function(response) {
+			res.type("json");
+			res.send(response);
+		});
 	});
 
 	app.get('/:SEARCHTERMS', function(req, res) {
