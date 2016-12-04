@@ -42,7 +42,7 @@ module.exports = function(searchTerms, offset, auth, dbUrl, callback) {
 		var data = parsedJSON.data;
 		var result = [];
 		if (data.length > 0) {
-			for (var i = offset; i < offset + 10 && i < data.length; i++) {
+			for (var i = offset; i < offset + 10 || i < data.length; i++) {
 				var obj = {
 					"cover": "i.imgur.com/" + data[i].cover + ".jpg",
 					"title": data[i].title,
